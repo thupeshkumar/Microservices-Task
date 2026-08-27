@@ -1,0 +1,36 @@
+services:
+  product-service:
+    container_name: product-service
+    build: ./product-service
+    ports:
+      - "3001:3001"
+    restart: always
+    networks:
+      - microservices-network
+  order-service:
+    container_name: order-service
+    build: ./order-service
+    ports:
+      - "3002:3002"
+    restart: always
+    networks:
+      - microservices-network
+  gateway-service:
+    container_name: gateway-service
+    build: ./gateway-service
+    ports:
+      - "3003:3003" 
+    restart: always
+    networks:
+      - microservices-network
+  user-service:
+    container_name: user-service
+    build: ./user-service
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - microservices-network
+networks:
+  microservices-network:
+    driver: bridge     
