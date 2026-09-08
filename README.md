@@ -1,68 +1,117 @@
-# Microservices-Task
+cd Microservices-Task
+echo "# Microservices Containerization Assessment
 
-## Overview
-This document provides details on testing various services after running the `docker-compose` file. These services include User, Product, Order, and Gateway Services. Each service has its own endpoints for testing purposes.
+## 📌 Project Overview
+This project demonstrates containerization of **Node.js microservices** using **Docker** and **Docker Compose**.  
+The application consists of the following services, each running in its own container and communicating via a shared Docker network:
 
----
+- **User Service**
+- **Product Service**
+- **Order Service**
+- **Gateway Service**
 
-## Services and Endpoints
+--- 
 
-### **User Service**
-- **Base URL:** `http://localhost:3000`
-- **Endpoints:**
-  - **List Users:**  
-    ```
-    curl http://localhost:3000/users
-    ```
-    Or open in your browser: [http://localhost:3000/users](http://localhost:3000/users)
+## 📂 Project Structure
+\`\`\`
+Microservices-Task/
+│
+├── Microservices/
+│   ├── user-service/
+│   │   └── Dockerfile
+│   ├── product-service/
+│   │   └── Dockerfile
+│   ├── order-service/
+│   │   └── Dockerfile
+│   └── gateway-service/
+│       └── Dockerfile
+│
+├── docker-compose.yml
+└── README.md
+\`\`\`
 
----
+--- 
 
-### **Product Service**
-- **Base URL:** `http://localhost:3001`
-- **Endpoints:**
-  - **List Products:**  
-    ```
-    curl http://localhost:3001/products
-    ```
-    Or open in your browser: [http://localhost:3001/products](http://localhost:3001/products)
+## ⚙️ Prerequisites
+Ensure the following software is installed:
+- Docker
+- Docker Compose
+- Git
 
----
+--- 
 
-### **Order Service**
-- **Base URL:** `http://localhost:3002`
-- **Endpoints:**
-  - **List Orders:**  
-    ```
-    curl http://localhost:3002/orders
-    ```
-    Or open in your browser: [http://localhost:3002/orders](http://localhost:3002/orders)
+## 🚀 Setup Instructions
 
----
+### Step 1: Clone Repository
+\`\`\`bash
+git clone https://github.com/thupeshkumar/Microservices-Task.git
+cd Microservices-Task
+\`\`\`
 
-### **Gateway Service**
-- **Base URL:** `http://localhost:3003/api`
-- **Endpoints:**
-  - **Users:**  
-    ```
-    curl http://localhost:3003/api/users
-    ```
-  - **Products:**  
-    ```
-    curl http://localhost:3003/api/products
-    ```
-  - **Orders:**  
-    ```
-    curl http://localhost:3003/api/orders
-    ```
+### Step 2: Build & Run Containers
+\`\`\`bash
+docker compose -f Microservices/docker-compose.yml up -d --build
+\`\`\`
 
----
+✅ This will build images and start all services in detached mode.
 
-## Instructions
-1. Start all services using the `docker-compose` file:
-   ```
-   docker-compose up
-   ```
-2. Once the services are running, use the above endpoints to verify the functionality.
+--- 
 
-Happy testing!
+## 🔌 Services and Ports
+| Service          | Port |
+|------------------|------|
+| User Service     | 3000 |
+| Product Service  | 3001 |
+| Order Service    | 3002 |
+| Gateway Service  | 3003 |
+
+--- 
+
+## 📡 API Testing
+
+### User Service
+- GET /users → Fetch all users
+
+### Product Service
+- GET /products → Fetch all products
+
+### Order Service
+- GET /orders → Fetch all orders
+
+### Gateway Service
+- GET /gateway/users → Fetch users via gateway  
+- GET /gateway/products → Fetch products via gateway  
+- GET /gateway/orders → Fetch orders via gateway  
+
+--- 
+
+## 🛠️ Docker Compose Features
+- Multi-container orchestration  
+- Shared networking  
+- Port mapping  
+- Service dependency management  
+
+--- 
+
+## 🧩 Troubleshooting
+
+### Port Already in Use
+Check running containers:
+\`\`\`bash
+docker ps
+\`\`\`
+Stop containers if necessary:
+\`\`\`bash
+docker compose down
+\`\`\`
+
+### View Logs
+\`\`\`bash
+docker logs user-service
+\`\`\`
+
+--- 
+
+## ✅ Conclusion
+All microservices were successfully containerized using Docker and orchestrated with Docker Compose.  
+They communicate seamlessly over a shared Docker network and are accessible via their respective ports." > README.md
